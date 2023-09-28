@@ -1,0 +1,50 @@
+[
+  {
+    "id": "9ijsUYTd21",
+    "patientName": "Paciente 1",
+    "appointmentDate": "2023-09-27",
+    "doctorName": "Dr. Médico 1",
+    "amountCharged": 100.00,
+    "status": "Agendado"
+  },
+  {
+    "id": "NKK23LDM",
+    "patientName": "Paciente 2",
+    "appointmentDate": "2023-09-27",
+    "doctorName": "Dr. Médico 1",
+    "amountCharged": 120.00,
+    "status": "Concluido"
+  },
+  {
+    "id": "QMZO2Nnxw",
+    "patientName": "Paciente 3",
+    "appointmentDate": "2023-09-27",
+    "doctorName": "Dr. Médico 1",
+    "amountCharged": 230.00,
+    "status": "Pendente"
+  },
+  {
+    "id": "DNA2n123lk",
+    "patientName": "Paciente 4",
+    "appointmentDate": "2023-09-27",
+    "doctorName": "Dr. Médico 1",
+    "amountCharged": 230.00,
+    "status": "Pendente"
+  },
+  {
+    "id": "MASDK1aslda",
+    "patientName": "Paciente 5",
+    "appointmentDate": "2023-09-27",
+    "doctorName": "Dr. Médico 1",
+    "amountCharged": 230.00,
+    "status": "Pendente"
+  },
+  {
+    "id": "OINVNOIO12",
+    "patientName": "Paciente 6",
+    "appointmentDate": "2023-09-27",
+    "doctorName": "Dr. Médico 1",
+    "amountCharged": 230.00,
+    "status": "Pendente"
+  }
+]
