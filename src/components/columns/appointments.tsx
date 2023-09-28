@@ -3,7 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Search } from "lucide-react";
 
-export type Appointment = {
+export type IAppointmentsProps = {
   id: string;
   patientName: string;
   appointmentDate: string;
@@ -12,7 +12,7 @@ export type Appointment = {
   status: "Pendente" | "Agendado" | "Concluido" | "Cancelado";
 };
 
-export const columns: ColumnDef<Appointment>[] = [
+export const columns: ColumnDef<IAppointmentsProps>[] = [
   {
     accessorKey: "id",
     header: "Código",
