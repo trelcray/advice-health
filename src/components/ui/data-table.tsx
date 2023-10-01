@@ -105,18 +105,19 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Sem resultados.
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
+      <div className="flex items-center justify-between space-x-2 py-4">
+        <p className="text-sm text-muted-foreground">
           Página {table.getState().pagination.pageIndex + 1} de{" "}
-          {table.getPageCount()} pagina(s).
-        </div>
+          {table.getPageCount()}{" "}
+          <span className="hidden sm:inline"> pagina(s).</span>
+        </p>
         <div className="space-x-2">
           <Button
             variant="outline"

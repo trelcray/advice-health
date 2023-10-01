@@ -3,13 +3,18 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Search } from "lucide-react";
 
+import { UseAppDispatch } from "@/hooks/use-app-selector";
+import { onOpen } from "@/redux/states/edit-modal.slice";
+import { onOpen as onOpenView } from "@/redux/states/view-modal.slice";
+
 export type IAppointmentsProps = {
   id: string;
   patientName: string;
-  appointmentDate: string;
+  appointmentDateStart: string;
+  appointmentDateEnd: string;
   doctorName: string;
   amountCharged: number;
-  status: "Pendente" | "Agendado" | "Concluido" | "Cancelado";
+  status: "Pendente" | "Agendado" | "Concluído" | "Cancelado";
 };
 
 export const columns: ColumnDef<IAppointmentsProps>[] = [
@@ -22,8 +27,12 @@ export const columns: ColumnDef<IAppointmentsProps>[] = [
     header: "Paciente",
   },
   {
-    accessorKey: "appointmentDate",
-    header: "Data de Agendamento",
+    accessorKey: "appointmentDateStart",
+    header: "Data de Agendamento Inicial",
+  },
+  {
+    accessorKey: "appointmentDateEnd",
+    header: "Data de Agendamento Final",
   },
   {
     accessorKey: "doctorName",
@@ -50,10 +59,17 @@ export const columns: ColumnDef<IAppointmentsProps>[] = [
     id: "actions",
     header: "Ações",
     cell: () => {
+      const dispatch = UseAppDispatch();
       return (
         <div className="flex gap-x-1">
-          <Edit className="h-5 w-5 cursor-not-allowed text-yellow-500" />
-          <Search className="h-5 w-5 cursor-not-allowed" />
+          <Edit
+            className="h-5 w-5 cursor-pointer text-yellow-500"
+            onClick={() => dispatch(onOpen())}
+          />
+          <Search
+            className="h-5 w-5 cursor-pointer"
+            onClick={() => dispatch(onOpenView())}
+          />
         </div>
       );
     },

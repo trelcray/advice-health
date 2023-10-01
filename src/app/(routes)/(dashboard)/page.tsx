@@ -19,10 +19,10 @@ export default function Home() {
 
   return (
     <div
-      className="mx-2 flex w-full flex-col items-center justify-around gap-10
+      className="flex w-full flex-col items-center justify-around gap-10 px-2
       lg:flex-row"
     >
-      <div className="flex flex-col gap-y-10">
+      <div className="flex w-full flex-col gap-y-10">
         <div className="relative flex w-full">
           <Input type="search" placeholder="buscar" />
           <Search
@@ -34,37 +34,42 @@ export default function Home() {
           className="flex flex-col items-center gap-x-5 gap-y-10 lg:flex-row 
           lg:items-end"
         >
-          <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold uppercase text-blue-700">
+          <div className="flex w-full flex-col items-center gap-4">
+            <h2
+              className="text-left text-2xl font-bold uppercase 
+              text-blue-700 lg:w-full"
+            >
               Dashboard
             </h2>
             <Content
               title="Faturamento"
-              value="R$ 2.000"
-              className="h-64 w-80 justify-center pb-12 text-emerald-500"
+              isPrice
+              value={2000}
+              className="h-48 justify-center pb-12 text-emerald-500 lg:h-64"
             />
           </div>
 
-          <div className="flex flex-col gap-y-4">
+          <div className="flex w-full flex-col items-center gap-y-4">
             <Content
               title="Pacientes agendados"
-              value="20"
+              value={20}
               className="text-orange-500"
             />
             <Content
               title="Pacientes atendidos"
-              value="01"
+              value={5}
               className="text-cyan-600"
             />
           </div>
         </div>
-        <div className="container mx-auto flex flex-col gap-y-2 py-10 ">
+        <div className="w-full space-y-4">
           <h3 className="w-full text-start text-lg font-semibold">
             Quadro de aviso/lembrete
           </h3>
           <DataTable columns={columns} data={reminders} />
         </div>
       </div>
+
       <div className="flex w-full max-w-md flex-col items-center gap-y-24">
         <Calendar
           mode="single"

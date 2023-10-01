@@ -10,6 +10,7 @@ import {
 
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
+import { AlertCircle } from "lucide-react";
 
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
@@ -154,14 +155,17 @@ const FormMessage = React.forwardRef<
   }
 
   return (
-    <p
-      ref={ref}
-      id={formMessageId}
-      className={cn("text-sm font-medium text-destructive", className)}
-      {...props}
-    >
-      {body}
-    </p>
+    <div className="flex items-center gap-x-2 text-rose-500">
+      <AlertCircle size={20} className="mt-[0.05rem]" />
+      <p
+        ref={ref}
+        id={formMessageId}
+        className={cn("text-sm font-medium text-destructive", className)}
+        {...props}
+      >
+        {body}
+      </p>
+    </div>
   );
 });
 FormMessage.displayName = "FormMessage";

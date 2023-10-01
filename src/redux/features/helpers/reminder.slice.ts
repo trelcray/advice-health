@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export type IReminderProps = {
   id: number;
   description: string;
-  status: "Pendente" | "Agendado" | "Concluido" | "Cancelado";
+  status: "Pendente" | "Agendado" | "Concluído" | "Cancelado";
 };
 
 interface IReminderState {
@@ -14,27 +14,27 @@ const initialState: IReminderState = {
   reminders: [
     {
       id: 1,
-      description: "lorem ipsum dolor sit am",
+      description: "Consulta as 15:00 horas",
       status: "Agendado",
     },
     {
       id: 2,
-      description: "lorem ipsum dolor sit am",
+      description: "Cirurgia com o Dr. Marcus",
       status: "Cancelado",
     },
     {
       id: 3,
-      description: "lorem ipsum dolor sit am",
-      status: "Concluido",
+      description: "Laudo do paciente 1",
+      status: "Concluído",
     },
     {
       id: 4,
-      description: "lorem ipsum dolor sit am",
+      description: "Agendar consulta para paciente 2",
       status: "Pendente",
     },
     {
       id: 5,
-      description: "lorem ipsum dolor sit am",
+      description: "Cirurgia de core",
       status: "Agendado",
     },
   ],

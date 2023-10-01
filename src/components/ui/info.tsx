@@ -1,18 +1,40 @@
 import { User } from "lucide-react";
 
+import { cn } from "@/lib/utils";
+
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
 interface IInfoProps {
   title: string;
   subtitle: string;
   imageUrl: string;
+  selected?: string;
+  id?: string;
 }
 
-export const Info: React.FC<IInfoProps> = ({ subtitle, title, imageUrl }) => {
+export const Info: React.FC<IInfoProps> = ({
+  subtitle,
+  title,
+  imageUrl,
+  selected,
+  id,
+}) => {
   return (
-    <div className="flex w-full items-center gap-x-1 rounded-lg bg-blue-300 p-2">
+    <div
+      className={cn(
+        "flex w-full cursor-pointer items-center gap-x-1 rounded-lg",
+        "bg-blue-300 p-2 transition-colors duration-300 hover:bg-blue-400",
+        {
+          "bg-emerald-300 hover:bg-emerald-400":
+            selected === id && id !== undefined,
+        }
+      )}
+    >
       <Avatar>
-        <AvatarImage src={imageUrl ?? "/images/avatar.png"} />
+        <AvatarImage
+          src={imageUrl ?? "/images/avatar.png"}
+          alt="avatar image"
+        />
         <AvatarFallback>
           <User />
         </AvatarFallback>

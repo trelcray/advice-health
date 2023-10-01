@@ -3,25 +3,33 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 interface IModalProps {
   children: React.ReactNode;
   title: string;
-  content: React.ReactElement;
-  label: string;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export const Modal: React.FC<IModalProps> = ({ children, title, content }) => {
+export const Modal: React.FC<IModalProps> = ({
+  children,
+  title,
+  isOpen,
+  onClose,
+}) => {
+  const onChange = (open: boolean) => {
+    if (!open) {
+      onClose();
+    }
+  };
   return (
-    <Dialog>
-      <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+    <Dialog modal open={isOpen} onOpenChange={onChange}>
+      <DialogContent className="max-h-[95vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
-        {content}
+        {children}
       </DialogContent>
     </Dialog>
   );

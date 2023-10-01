@@ -1,3 +1,5 @@
+"use client";
+
 import { IAppointmentsProps, columns } from "@/components/columns/appointments";
 import { Content } from "@/components/ui/content";
 import { DataTable } from "@/components/ui/data-table";
@@ -12,10 +14,23 @@ export default function Appointment() {
         rowName="patientName"
       />
       <div className="flex flex-wrap justify-center gap-2 md:justify-between">
-        <Content title="Total de Agendamentos" value="150" />
-        <Content title="Total de Atendimentos" value="148" />
-        <Content title="Total Pendente" value="2" />
-        <Content title="Total Faturado" value="12.000" />
+        <Content
+          className="text-amber-500"
+          title="Total de Agendamentos"
+          value={150}
+        />
+        <Content
+          className="text-blue-500"
+          title="Total de Atendimentos"
+          value={148}
+        />
+        <Content className="text-rose-500" title="Total Pendente" value={2} />
+        <Content
+          className="text-emerald-500"
+          title="Total Faturado"
+          isPrice
+          value={12000}
+        />
       </div>
     </div>
   );

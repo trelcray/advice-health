@@ -12,11 +12,7 @@ import { UseToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import doctors from "@/mocks/doctors.json";
 import uf from "@/mocks/uf.json";
-import {
-  IAppointmentProps,
-  addAppointment,
-} from "@/redux/features/helpers/appointment.slice";
-import { onClose } from "@/redux/states/register-modal.slice";
+import { onClose } from "@/redux/states/edit-modal.slice";
 import { viaCepAPI } from "@/services/api";
 import {
   normalizeCep,
@@ -58,29 +54,32 @@ interface ViaCepResponse {
   erro?: string;
 }
 
-export const RegisterModal = () => {
+export const EditModal = () => {
   const dispatch = UseAppDispatch();
-  const { isOpen } = UseAppSelector((state) => state.registerModal);
+  const { isOpen } = UseAppSelector((state) => state.editModal);
 
   const { toast } = UseToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nome: "",
-      cpf: "",
-      genero: "",
-      cep: "",
-      email: "",
-      bairro: "",
-      telefone: "",
-      cidade: "",
-      logradouro: "",
-      medico: "",
-      title: "",
-      metodoPagamento: "",
-      uf: "",
-      valor: "",
+      nome: "Paciente 1",
+      cpf: "123.456.789-09",
+      genero: "Masculino",
+      cep: "90040-000",
+      email: "johndoe@gmail.com",
+      bairro: "Centro Histórico",
+      telefone: "(55) 99989-9989",
+      cidade: "Porto Alegre",
+      logradouro: "Avenida João Pessoa",
+      medico: "Marcus Filho",
+      title: "Consulta com o dr. Marcus Filho",
+      metodoPagamento: "Dinheiro",
+      uf: "RS",
+      valor: "120",
+      end: "2023-10-01T13:00",
+      start: "2023-10-01T12:00",
+      dataNascimento: "2023-02-10",
     },
   });
 
@@ -89,27 +88,9 @@ export const RegisterModal = () => {
   const cepValue = form.watch("cep");
   const cpfValue = form.watch("cpf");
 
-  const generateRandomId = () => {
-    const randomId = Math.random().toString(36).substring(2, 8); // Gera uma string de 6 caracteres
-    return randomId;
-  };
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      const randomId = generateRandomId();
-      values.id = randomId;
-      values.dataNascimento = new Date(values.dataNascimento);
-      values.start = new Date(values.start);
-      values.end = new Date(values.end);
-      dispatch(addAppointment(values as IAppointmentProps));
-      dispatch(onClose());
-      toast({ title: "Agendado com sucesso!" });
-    } catch (error) {
-      toast({
-        title: "Ocorreu um erro durante o processamento!",
-        isError: true,
-      });
-    }
+  const onSubmit = () => {
+    dispatch(onClose());
+    toast({ title: "Editado com sucesso!" });
   };
 
   const fetchData = useCallback(async () => {
@@ -157,7 +138,7 @@ export const RegisterModal = () => {
 
   return (
     <Modal
-      title="Agendar Consulta"
+      title="Editar Consulta"
       isOpen={isOpen}
       onClose={() => dispatch(onClose())}
     >

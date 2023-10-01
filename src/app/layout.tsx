@@ -1,31 +1,22 @@
-"use client";
+import type { Metadata } from "next";
 
-import { Poppins } from "next/font/google";
-
-import { Header } from "@/components/section/header";
-import { cn } from "@/lib/utils";
-import { ReduxProvider } from "@/providers/redux-provider";
-import "@/styles/globals.css";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-});
+export const metadata: Metadata = {
+  title: "AdviceHealth",
+  description: "AdviceHealth",
+  creator: "thaliszambarda",
+  themeColor: "white",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "https://advice-health-trelcray.vercel.app/site.webmanifest",
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className={cn("font-poppins", poppins.variable)}>
-        <ReduxProvider>
-          <Header />
-          <main className="flex min-h-screen pb-10 pt-24">{children}</main>
-        </ReduxProvider>
-      </body>
-    </html>
-  );
+  return <>{children}</>;
 }
